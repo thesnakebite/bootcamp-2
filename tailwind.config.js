@@ -13,6 +13,9 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                shadowhand: ["ShadowHand"],
+                worksansmedium: ["WorksansMedium"],
+                worksansbold: ["WorksansBold"],
             },
         },
     },
