@@ -6,7 +6,7 @@
         <div class="bg-slate-400 w-2/3 h-5 mb-4"></div>
         @foreach ($posts as $post)
                 <h2 class=" text-xl font-worksansmedium">
-                    <a href="#">
+                    <a href="{{ route('posts.show', $post)  }}">
                         {{ $post->title }}
                     </a>
                 </h2>

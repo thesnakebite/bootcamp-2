@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 //personal-site.com/contacto => contact
 
 Route::view('/', 'home')->name('home');
-Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
-Route::get('/blog/{id}', [PostController::class, 'show'])->name('blog.show');
+Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
+Route::get('/blog/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::view('/nosotros', 'about')->name('about');
 Route::view('/contacto', 'contact')->name('contact');
 
