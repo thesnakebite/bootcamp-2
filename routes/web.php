@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 //personal-site.com/contacto => contact
 
 Route::view('/', 'home')->name('home');
-Route::view('/blog', 'blog')->name('blog');
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [PostController::class, 'show'])->name('blog.show');
 Route::view('/nosotros', 'about')->name('about');
 Route::view('/contacto', 'contact')->name('contact');
 
