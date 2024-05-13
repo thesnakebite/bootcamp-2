@@ -8,8 +8,8 @@
         </div>
         <div class="mt-12">
             <a href="{{ route('posts.index') }}"
-               class="font-worksansbold uppercase text-blue-700">
-               Volver
+               class="font-worksansbold uppercase text-blue-800">
+               {{ __('Back') }}
             </a>
         </div>
     </div>
