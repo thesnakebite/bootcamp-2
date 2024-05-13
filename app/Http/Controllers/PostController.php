@@ -22,4 +22,27 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        // Validaciones
+        $request->validate([
+            'title' => ['required', 'min:3'],
+            'body' => ['required', 'max:1024']
+        ]);
+
+        $post = new Post();
+        $post->title =$request->input('title');
+        $post->body =$request->input('body');
+        $post->save();
+
+        session()->flash('status', 'Publicación creada con exito!');
+
+        return to_route('posts.index');
+    }
 }

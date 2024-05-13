@@ -13,6 +13,13 @@
 
     <x-partials.navbar />
     <div class="bg-slate-100 w-full min-h-screen flex flex-col">
+        <!-- Mensaje de sesión -->
+        @session('status')
+            <div class="bg-green-600 text-white p-3 w-full text-center rounded font-worksansbold mb-16">
+                {{ $value }}
+            </div>
+        @endsession
+        
         <div class="flex-1">
             
             {{ $slot }}
