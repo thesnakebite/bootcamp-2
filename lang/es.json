@@ -257,5 +257,7 @@
     "Body": "Contenido",
     "Create new post": "Crear nueva publicación",
     "Post create": "Crear post",
-    "Back": "Regresar"
+    "Back": "Regresar",
+    "Edit post": "Editar post",
+    "Update post": "Actualizar post"
 }

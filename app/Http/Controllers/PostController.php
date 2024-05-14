@@ -23,6 +23,29 @@ class PostController extends Controller
         ]);
     }
 
+    public function edit(Post $post)
+    {
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        // Validaciones
+        $request->validate([
+            'title' => ['required', 'min:3'],
+            'body' => ['required', 'max:1024']
+        ]);
+
+        $post->title =$request->input('title');
+        $post->body =$request->input('body');
+        $post->save();
+
+        session()->flash('status', 'Publicación actualizada con exito!');
+        return to_route('posts.show', $post);
+    }
+
     public function create()
     {
         return view('posts.create');
