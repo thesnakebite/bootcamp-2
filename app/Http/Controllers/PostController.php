@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SavePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -30,20 +31,13 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(SavePostRequest $request, Post $post)
     {
-        // Validaciones
-        $request->validate([
-            'title' => ['required', 'min:3'],
-            'body' => ['required', 'max:1024']
-        ]);
+        Post::updated($request->validated());
 
-        $post->title =$request->input('title');
-        $post->body =$request->input('body');
-        $post->save();
-
-        session()->flash('status', 'Publicación actualizada con exito!');
-        return to_route('posts.show', $post);
+        // Podemos eliminar sesion()->flash() y usar with() para enviar mensajes a la vista
+        // session()->flash('status', 'Publicación actualizada con exito!');
+        return to_route('posts.show', $post)->with('status', 'Publicación actualizada con exito!');
     }
 
     public function create()
@@ -53,21 +47,12 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        // Validaciones
-        $request->validate([
-            'title' => ['required', 'min:3'],
-            'body' => ['required', 'max:1024']
-        ]);
+    public function store(SavePostRequest $request)
+    {    
+        Post::create($request->validated());
 
-        $post = new Post();
-        $post->title =$request->input('title');
-        $post->body =$request->input('body');
-        $post->save();
-
-        session()->flash('status', 'Publicación creada con exito!');
-
-        return to_route('posts.index');
+        // Podemos eliminar sesion()->flash() y usar with() para enviar mensajes a la vista
+        // session()->flash('status', 'Publicación creada con exito!');
+        return to_route('posts.index')->with('status', 'Publicación creada con exito!');
     }
 }
