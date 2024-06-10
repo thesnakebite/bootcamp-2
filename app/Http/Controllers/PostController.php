@@ -55,4 +55,11 @@ class PostController extends Controller
         // session()->flash('status', 'Publicación creada con exito!');
         return to_route('posts.index')->with('status', 'Publicación creada con exito!');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return to_route('posts.index')->with('status', 'Publicación eliminada con exito!');
+    }
 }

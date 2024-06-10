@@ -2,7 +2,7 @@
     <h1 class="flex justify-center mt-12 font-shadowhand text-7xl">Blog</h1>
 
     <div class="flex flex-col p-16">
-        <h1 class="text-2xl font-worksansbold">{{ __('Create new post') }}</h1>
+        <h1 class="text-4xl font-worksansbold">{{ __('Create new post') }}</h1>
         <div class="bg-slate-400 w-56 h-5 mb-4"></div>
 
         <form class="flex flex-col w-3/4" 
